@@ -4,8 +4,8 @@ import AuthContext from '../store/auth-context';
 import HomePage from './home';
 
 const Home = () => {
-  const ctx = useContext(AuthContext);
-  return <>{ctx.isLoggedIn ? <HomePage /> : <LoginPage />}</>;
+  const authCtx = useContext(AuthContext);
+  return <>{authCtx.isLoggedIn ? <HomePage /> : <LoginPage />}</>;
 };
 
 export default Home;

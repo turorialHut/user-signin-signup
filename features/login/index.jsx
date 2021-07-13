@@ -6,7 +6,6 @@ import AuthContext from '../../store/auth-context';
 const LoginPage = (props) => {
   const ctx = useContext(AuthContext);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState({ type: null, message: null });
 
