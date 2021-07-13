@@ -1,11 +1,11 @@
 import React from 'react';
-import Login from '../features/login';
+import Home from '../features';
 
-const Home = () => {
+const Index = () => {
   return (
     <div>
-      <Login />
+      <Home />
     </div>
   );
 };
-export default Home;
+export default Index;

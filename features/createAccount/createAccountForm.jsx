@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import CryptoJs from 'crypto-js';
 import { makeStyles } from '@material-ui/styles';
+import Grid from '@material-ui/core/Grid';
 import Typography from '../../Components/Typography';
 import TextField from '../../Components/InputField/TextField';
 import Button from '../../Components/Button';
 import PasswordField from '../../Components/InputField/PasswordField';
-import CryptoJs from 'crypto-js';
+import Link from '../../Components/Link';
+import Card from '../../Components/Card';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,62 +84,85 @@ const CreateAccountForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <Typography variant='h6' align='center' className={classes.typography}>
-        Create Account
-      </Typography>
-      <TextField
-        label='Name'
-        placeholder='Name'
-        id='name'
-        name='name'
-        value={enteredName}
-        onChange={nameChangeHandler}
-        fullWidth
-        required
-      />
-      <TextField
-        label='Email'
-        placeholder='Email'
-        id='email'
-        name='email'
-        type='email'
-        value={enteredEmail}
-        onChange={emailChangeHandler}
-        fullWidth
-        required
-      />
-      <PasswordField
-        label='Password'
-        id='password'
-        value={enteredPswd}
-        onChange={passwordChangeHandler}
-        error={passwordError}
-        required
-      />
-      <PasswordField
-        label='Confirm Password'
-        id='cPassword'
-        value={enteredConPswd}
-        onChange={confirmPasswordChangeHandler}
-        error={cPasswordError}
-        labelWidth={145}
-        required
-      />
-      <Typography variant='caption' color='error'>
-        {conPswdHelperText}
-      </Typography>
-      <Button size='large' type='submit' className={classes.button} fullWidth>
-        Create Account
-      </Button>
-      <Button
-        variant='text'
-        className={classes.createAccountButton}
-        onClick={() => alert('hi ')}
-      >
-        Login to continue
-      </Button>
-    </form>
+    <div className={classes.root}>
+      <Card className={classes.card}>
+        <Grid
+          container
+          spacing={2}
+          justifyContent='center'
+          alignItems='center'
+          style={{ height: 450 }}
+        >
+          <form onSubmit={handleFormSubmit}>
+            <Typography
+              variant='h6'
+              align='center'
+              className={classes.typography}
+            >
+              Create Account
+            </Typography>
+            <TextField
+              label='Name'
+              placeholder='Name'
+              id='name'
+              name='name'
+              value={enteredName}
+              onChange={nameChangeHandler}
+              fullWidth
+              required
+            />
+            <TextField
+              label='Email'
+              placeholder='Email'
+              id='email'
+              name='email'
+              type='email'
+              value={enteredEmail}
+              onChange={emailChangeHandler}
+              fullWidth
+              required
+            />
+            <PasswordField
+              label='Password'
+              id='password'
+              value={enteredPswd}
+              onChange={passwordChangeHandler}
+              error={passwordError}
+              required
+            />
+            <PasswordField
+              label='Confirm Password'
+              id='cPassword'
+              value={enteredConPswd}
+              onChange={confirmPasswordChangeHandler}
+              error={cPasswordError}
+              labelWidth={145}
+              required
+            />
+            <Typography variant='caption' color='error'>
+              {conPswdHelperText}
+            </Typography>
+            <Button
+              size='large'
+              type='submit'
+              className={classes.button}
+              fullWidth
+            >
+              Create Account
+            </Button>
+            <Button
+              variant='text'
+              className={classes.createAccountButton}
+              component={Link}
+              href='/login'
+            >
+              Login to continue
+            </Button>
+          </form>
+          <Grid item md={12}></Grid>
+        </Grid>
+      </Card>
+    </div>
   );
 };
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { AuthContextProvider } from '../store/auth-context';
 import theme from '../styles/theme';
 
 const MyApp = (props) => {
@@ -30,9 +31,9 @@ const MyApp = (props) => {
   }, []);
 
   return (
-    <React.Fragment>
+    <AuthContextProvider>
       <Head>
-        <title>My page</title>
+        <title>App</title>
         <meta
           name='viewport'
           content='minimum-scale=1, initial-scale=1, width=device-width'
@@ -43,7 +44,7 @@ const MyApp = (props) => {
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
-    </React.Fragment>
+    </AuthContextProvider>
   );
 };
 
