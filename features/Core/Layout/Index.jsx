@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
@@ -61,6 +61,13 @@ const Layout = (props) => {
   const classes = useStyles();
 
   const [open, setOpen] = useState(true);
+
+  useEffect(() => {
+    const mobScreen = window.innerWidth <= 600;
+    if (mobScreen) {
+      setOpen(false);
+    }
+  }, []);
 
   const handleDrawerOpen = () => {
     setOpen(true);

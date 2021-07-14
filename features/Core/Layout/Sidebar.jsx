@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -10,8 +9,12 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import TodayIcon from '@material-ui/icons/Today';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import LiveHelpIcon from '@material-ui/icons/LiveHelp';
+import InfoIcon from '@material-ui/icons/Info';
+import Typography from '../../../Components/Typography';
 
 const drawerWidth = 240;
 
@@ -64,11 +67,27 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  darawerFooter: {
+    position: 'absolute',
+    bottom: 0,
+    padding: theme.spacing(3),
+  },
 }));
 
 const Sidebar = (props) => {
   const classes = useStyles();
   const theme = useTheme();
+
+  const sidebarData = [
+    { icon: <DashboardIcon />, name: 'Dashboard' },
+    { icon: <TodayIcon />, name: 'Reminder' },
+    { icon: <AssessmentIcon />, name: 'Reports' },
+  ];
+  const sidebarInfoData = [
+    { icon: <LiveHelpIcon />, name: 'Help' },
+    { icon: <InfoIcon />, name: 'Info' },
+  ];
+
   return (
     <Drawer
       className={classes.drawer}
@@ -89,27 +108,29 @@ const Sidebar = (props) => {
         </IconButton>
       </div>
       <Divider />
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <div className={classes.darawerContent}>
+        <List>
+          {sidebarData.map((data, index) => (
+            <ListItem button key={index}>
+              <ListItemIcon>{data.icon}</ListItemIcon>
+              <ListItemText primary={data.name} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {sidebarInfoData.map((data, index) => (
+            <ListItem button key={index}>
+              <ListItemIcon>{data.icon}</ListItemIcon>
+              <ListItemText primary={data.name} />
+            </ListItem>
+          ))}
+        </List>
+      </div>
+      <Divider style={{ width: '100%' }} />
+      <div className={classes.darawerFooter}>
+        <Typography>V 1.0.1</Typography>
+      </div>
     </Drawer>
   );
 };
