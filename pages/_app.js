@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import {
+  unstable_createMuiStrictModeTheme as createTheme,
+  ThemeProvider,
+} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { AuthContextProvider } from '../store/auth-context';

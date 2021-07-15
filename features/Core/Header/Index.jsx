@@ -1,11 +1,8 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import HomeIcon from '@material-ui/icons/Home';
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-import Box from '@material-ui/core/Box';
 import Card from '../../../Components/Card';
 import Typography from '../../../Components/Typography';
-import Breadcrumbs from '../../../Components/Breadcrumbs';
 
 const Header = (props) => {
   const links = [
@@ -17,8 +14,8 @@ const Header = (props) => {
   ];
   return (
     <Card>
-      <Grid container alignItems='center' spacing={1}>
-        <Grid item xs>
+      <Grid container alignItems='center' direction='row' spacing={2}>
+        <Grid item>
           <Typography variant='h6'>{props.heading}</Typography>
         </Grid>
         {props.children}

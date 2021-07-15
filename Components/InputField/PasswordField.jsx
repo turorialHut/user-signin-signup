@@ -11,15 +11,8 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
   margin: {
     margin: theme.spacing(1, 0),
-  },
-  withoutLabel: {
-    marginTop: theme.spacing(3),
   },
   textField: {
     width: '100%',
@@ -30,8 +23,8 @@ const PasswordField = (props) => {
   const {
     label,
     id,
-    onChange,
     value,
+    onChange,
     onClick,
     onMouseDown,
     labelWidth,
